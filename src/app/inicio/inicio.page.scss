@@ -16,6 +16,7 @@ p{
   color: white;
   margin: auto;
   padding-left:  10px;
+  padding-top: 10px;
   font-family:'myriad Pro bold';
 }
 
@@ -32,4 +33,15 @@ h5{
   margin-top: 100px;
   border: 2px solid rgba(0,0,0,.125);
   border-radius: 0.25rem;
+}
+
+#btn-camara{
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ion-padding{
+  font-size: large;
 }

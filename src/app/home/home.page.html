@@ -5,17 +5,21 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-card id="tarjeta-loggin">
+    <ion-card-content>
+
   <ion-grid> 
-    <ion-row>
-      <ion-col>
         <h6>
           <ion-avatar id="avatar"#avatar>
             
             <img alt="Silhouette of a person's head" src="https://i.ytimg.com/vi/zOT6Hkh0FZQ/maxresdefault.jpg" />
           </ion-avatar>
         </h6>
-          <ion-input label="Usuario" label-placement="floating" fill="solid" ></ion-input>
+
+          <ion-input [(ngModel)]="user.usuario" label="Usuario" label-placement="floating" fill="solid" ></ion-input>
         <ion-input
+        [(ngModel)]="user.mail"
         id="mail"
         type="email"
         fill="solid"
@@ -25,23 +29,59 @@
         errorText="Invalid email"
         ngModel
         email>
+        
         <br>
+        
       </ion-input>
+      
+
         <ion-item color="Duoc">
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input [(ngModel)]="user.password" type="password"></ion-input>
         </ion-item>
         <br>
         <ion-checkbox labelPlacement="end">Mantener sesión iniciada</ion-checkbox>
         <br>
         <h6><a [routerLink]="['/forgot-password']">Reestablecer Contraseña</a></h6>
-        <ion-button (click)="presentToast1()" [routerLink]="['/inicio']">Ingresar</ion-button>
-      
-      </ion-col>
-    </ion-row>
+        <ion-button id="ingresar" shape="round" (click)="enviarInformacion()">Ingresar</ion-button>
+        <ion-button id="open-modal" expand="block" shape="round">Registrarse</ion-button>
   </ion-grid>
+</ion-card-content>
+</ion-card>
+
+<ion-modal trigger="open-modal">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Salir</ion-button>
+        </ion-buttons>
+        <ion-title>Registro</ion-title>
+        <ion-buttons slot="end" id="present-alert">
+          <ion-button (click)="confirm()" [strong]="true">Confirmar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item>
+        <ion-input [(ngModel)]="user.usuario" label="Nombre Usuario" labelPlacement="floating"
+          placeholder="Ingrese su Usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="user.mail" label="Gmail" labelPlacement="floating"
+          placeholder="Ingrese su Correo Electronico"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="user.password" label="Contraseña" type="password" labelPlacement="floating"
+          placeholder="Ingrese su Contraseña"></ion-input>
+      </ion-item>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
 </ion-content>
 
+<br>
 <ion-footer>
   <p style="font-size: xxx-large">DuocUC</p>
   <br>

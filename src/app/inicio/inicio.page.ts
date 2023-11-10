@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-inicio',
@@ -10,10 +10,13 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class InicioPage implements OnInit{
 
+code: any;
+
   constructor(
     public toastController: ToastController,
     public alertController: AlertController,
-    private router: Router, private activatedRouter: ActivatedRoute
+    private router: Router, private activatedRouter: ActivatedRoute,
+    private barcodeScanner: BarcodeScanner
   ) {}
 
   ngOnInit() {
@@ -21,16 +24,19 @@ export class InicioPage implements OnInit{
       let state = this.router.getCurrentNavigation()?.extras.state;
       if (state) {
         this.user.usuario = state['user'].usuario;
+        this.user.mail = state['user'].mail;
+        this.user.password = state['user'].password;
         console.log(this.user);
       }
     })
   }
 
-  public alertButtons = ['OK'];
   public user = {
-    usuario: ""
+    usuario: "",
+    mail:"",
+    password:""
   }
-
+  
   async presentAlert1(){
     const alert = await this.alertController.create({
       message: "Esta funcion aun no se encuentra disponible",
@@ -48,5 +54,14 @@ export class InicioPage implements OnInit{
       position: "bottom"
     });
     toast.present()
+  }
+
+  scan(){
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.code = barcodeData.text;
+      console.log('Barcode data', barcodeData);     
+    }).catch(err => {
+         console.log('Error', err);
+     });
   }
 }
