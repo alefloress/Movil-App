@@ -1,0 +1,7 @@
+{
+  "name": "kovuputo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

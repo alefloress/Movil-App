@@ -1,0 +1,33 @@
+
+ion-toolbar{
+  background-color: var(--ion-color-duocazul);
+}
+
+#avatar{
+margin: auto;
+width: 200px;
+height: 200px;
+}
+
+ion-footer{
+  background-color: var(--ion-color-duocazul);
+  height: 150px;
+}
+
+p{
+  color: white;
+  margin: auto;
+  padding-left:  10px;
+  font-family:'myriad Pro bold';
+}
+
+.sc-ion-input-md-h {
+
+  --background: transparent;
+  --color: initial;
+  --border-style: solid;
+  --highlight-color-focused: var(--ion-color-primary, #3880ff);
+  --highlight-color-valid: #3880ff;
+  --highlight-color-invalid: var(--ion-color-danger, #eb445a);
+  --highlight-color: var(--highlight-color-focused);
+}

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="MyColor">
+    <ion-title color="light"><img src="../assets/img/epico.png" height="50px"/></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Registro Duoc</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <br> 
+      <h5>Ramos</h5><br>
+      <h5>Horarios</h5><br>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+  <ion-grid>
+    <swiper-container id="slide1">
+      <swiper-slide><img src="../assets/img/duoc_1.png" (click)="presentToast2()"></swiper-slide>
+      <swiper-slide><img src="../assets/img/duoc_2.png" (click)="presentToast2()"></swiper-slide>
+      <swiper-slide><img src="../assets/img/duoc_3.png" (click)="presentToast2()"></swiper-slide>
+    </swiper-container>
+  </ion-grid >
+    <ion-label></ion-label><br><br>
+  <ion-grid id="camara">
+    <ion-button (click)="presentAlert1()" expand="block">Activar camara</ion-button>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <p style="font-size: xxx-large">DuocUC</p>
+  <br>
+  <p style="font-size:medium">Instituto Profesional DuocUC</p>
+  <p style="font-size:medium">7 años desde agosto 2017 hasta ahora</p>
+  <p style="font-size:medium">agosto2024</p>
+
+</ion-footer>
