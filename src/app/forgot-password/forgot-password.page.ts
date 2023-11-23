@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import {  ElementRef, ViewChildren, ViewChild } from '@angular/core';
 import type { QueryList } from '@angular/core';
-import type { Animation } from '@ionic/angular';
-import { AnimationController, IonCard } from '@ionic/angular';
+import { Animation, AnimationController, IonCard } from '@ionic/angular';
+import { IonAvatar } from '@ionic/angular';
+import { AutenticacionService } from '../servicios/autenticacion.service';
 
 
 @Component({
@@ -12,34 +13,33 @@ import { AnimationController, IonCard } from '@ionic/angular';
   styleUrls: ['./forgot-password.page.scss'],
 })
 
+export class ForgotPasswordPage {
+  @ViewChild(IonAvatar, { read: ElementRef }) avatar!: ElementRef<HTMLIonAvatarElement>;
+private animation!: Animation;
 
-/* Intentamos animar el boton de ingresar para que se desplazara a un lado pero no pudimos,
-   por eso esta zona esta en formato de comentario
-   
-    export class ExampleComponent {
-      @ViewChild(IonCard, { read: ElementRef }) card: ElementRef<HTMLIonCardElement>;
+constructor(private router: Router, private animationCtrl: AnimationController, private auth: AutenticacionService) {
 
-      private animation: Animation;
+}
+public mensaje = "";
+public estado: String = "";
 
-      constructor(private animationCtrl: AnimationController) {}
+public alertButtons = ['OK'];
 
-      ngAfterViewInit() {
-        this.animation = this.animationCtrl
-          .create()
-          .addElement(this.card.nativeElement)
-          .duration(1500)
-          .iterations(Infinity)
-          .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
-          .fromTo('opacity', '1', '0.2');
-      }
-    }
-*/
 
-export class ForgotPasswordPage implements OnInit {
+ngAfterViewInit() {
+  this.animation = this.animationCtrl.create()
+    .addElement(this.avatar.nativeElement)
+    .duration(8000)
+    .iterations(Infinity)
+    .keyframes([
+      { offset: 0, transform: 'translateX(0px)', opacity: '1' },
+      { offset: 0.25, transform: 'translateX(100px)', opacity: '0.2' },
+      { offset: 0.50, transform: 'translateX(0px)', opacity: '1' },
+      { offset: 0.75, transform: 'translateX(-100px)', opacity: '0.2' },
+      { offset: 0.75, transform: 'translateX(0px)', opacity: '1' },
+    ])
 
-  constructor() { }
 
-  ngOnInit() {
+  this.animation.play();
   }
-
 }

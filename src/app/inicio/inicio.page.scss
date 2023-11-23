@@ -29,7 +29,7 @@ h5{
 }
 
 #slide1{
-  width: 650px;
+  width: 100%;
   margin-top: 100px;
   border: 2px solid rgba(0,0,0,.125);
   border-radius: 0.25rem;
@@ -44,4 +44,9 @@ h5{
 
 .ion-padding{
   font-size: large;
+}
+
+a {
+  color: inherit; 
+  text-decoration: none; 
 }

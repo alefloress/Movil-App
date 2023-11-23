@@ -5,20 +5,19 @@ ion-toolbar{
 
 #avatar{
 margin: auto;
-width: 200px;
-height: 200px;
+width: 150px;
+height: 150px;
 }
 
 ion-footer{
   background-color: var(--ion-color-duocazul);
-  height: 150px;
+  height: 17%;
 }
 
 p{
   color: white;
   margin: auto;
-  padding-left:  10px;
-  padding-top: 10px;
+  width: 100%;
   font-family:'myriad Pro bold';
 }
 
@@ -34,18 +33,18 @@ p{
 }
 
 #tarjeta-loggin{
-  margin-top: 100px;
+  margin-top: 15px;
   border-radius: 20px;
   border-color: black;
 }
 
 #ingresar{
-  width: 105px;
-  margin-left: 230px;
+  width: 40%;
+  display: flex;
 }
 
 #open-modal{
-  width: 130px;
-  margin-left: 217px;
+  width: 40%;
+  display: flex;
 }
 
