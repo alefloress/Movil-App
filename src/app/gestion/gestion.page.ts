@@ -30,14 +30,17 @@ export class GestionPage implements OnInit {
     this.modal.dismiss(null, 'cancel');
   }
   
-  confirmAddModal() {
-    console.log(this.post);
-    this.api.createPost(this.post).subscribe((success) => {
-      this.datosAPI = "Agregado con Exito  ";
-    }, (err) => {
-      console.error(err);
+  obtenerTodo() {
+    this.datosAPI = ""
+    this.api.getPosts().subscribe((res) => {
+      console.log(res);
+      res.forEach((tmp: dataAPI) => {
+        this.datosAPI += tmp.id + "\n";
+        this.datosAPI += tmp.nombre + "\n";
+      });
+    }, (error) => {
+      console.log(error);
     })
-    this.modal.dismiss(null, 'confirm');
   }
 
   eliminar(id: any) {
@@ -46,5 +49,30 @@ export class GestionPage implements OnInit {
     }, (err) => {
       console.error(err);
     })
+  }
+  modificar(id: any) {
+    this.api.getPost(id).subscribe((res: dataAPI) => {
+      console.log(res);
+      this.post.id = res.id;
+      this.post.nombre = res.nombre;
+
+
+    }, (err) => {
+      console.error(err.message)
+    })
+  }
+
+  cancelUpdateModal() {
+    this.updateModal.dismiss(null, 'cancel');
+  }
+
+  confirmUpdateModal() {
+    console.log(this.post);
+    this.api.updatePost(this.post.id, this.post).subscribe((success) => {
+      this.datosAPI = "Modificado con Exito  ";
+    }, (err) => {
+      console.error(err);
+    })
+    this.updateModal.dismiss(null, 'confirm');
   }
 }
